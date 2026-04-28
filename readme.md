@@ -6,8 +6,8 @@ SAT(Simple AI Translator)는 OCR을 이용해 화면의 텍스트를 추출 후 
 
 이 프로젝트는 [MORT](https://github.com/killkimno/MORT) 프로젝트로부터 영감을 받아 만들어졌습니다.
 
-# SAT - Simple AI Translator
-SAT는 OCR을 이용해 화면 상의 텍스트를 캡처한 후, 사용자 설정에 따라 번역 서비스를 제공하는 프로그램입니다.
+# STA - Simple Translator AI
+STA는 OCR을 이용해 화면 상의 텍스트를 캡처한 후, 사용자 설정에 따라 번역 서비스를 제공하는 프로그램입니다.
 
 사용자 설정에 따라 텍스트만 추출/AI 번역/기계번역(구글)을 지원하며, AI 번역 사용 시 커스텀 프롬프트를 사용하여 맞춤 응답을 제공받을 수 있습니다.
 
