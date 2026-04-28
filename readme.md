@@ -2,7 +2,7 @@
 
 ![img](assets/Animation3.webp)
 
-SAT(Simple AI Translator)는 OCR을 이용해 화면의 텍스트를 추출 후 번역하는 간단한 프로그램입니다.
+STA(Simple Translator AI)는 OCR을 이용해 화면의 텍스트를 추출 후 번역하는 간단한 프로그램입니다.
 
 이 프로젝트는 [MORT](https://github.com/killkimno/MORT) 프로젝트로부터 영감을 받아 만들어졌습니다.
 
