@@ -1,4 +1,3 @@
-[![GitHub downloads](https://img.shields.io/github/downloads/amature0000/SOTE/total.svg?logo=github)](https://github.com/amature0000/SOTE/releases)
 
 ![img](assets/Animation3.webp)
 
