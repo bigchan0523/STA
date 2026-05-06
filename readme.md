@@ -12,9 +12,9 @@ STA는 OCR을 이용해 화면 상의 텍스트를 캡처한 후, 사용자 설�
 # How to use
 ## Prerequisites
 - [번역 대상 윈도우 언어 팩](https://support.microsoft.com/ko-kr/windows/windows%EC%9A%A9-%EC%96%B8%EC%96%B4-%ED%8C%A9-a5094319-a92d-18de-5b53-1cfc697cfca8)
-- [gemini api 키](https://aistudio.google.com/api-keys) (optional)
+- [gemini api 키](https://aistudio.google.com/api-keys) 
 ## Usage
-### [사용법 설명 링크](https://reinvented-oak-967.notion.site/SOTA-User-guide-2a14a4ebe77b801daf96f3de73345b7c)
+
 1. 설치 프로그램을 다운받아 실행한 후, 바탕화면에 생성된 바로가기를 실행합니다.
 2. 실행 시 뜨는 창에서 번역할 언어를 선택해 주세요.
 3. `번역하기` 버튼 또는 설정된 단축키를 눌러 화면을 캡처합니다.
