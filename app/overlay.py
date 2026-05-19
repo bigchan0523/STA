@@ -178,7 +178,8 @@ class OverlayWindow(QtWidgets.QWidget):
         
         # 기존 라벨들 제거
         for lbl in self.multi_labels:
-            lbl.setParent(None)
+            lbl.hide()
+            lbl.deleteLater()
         self.multi_labels.clear()
         
         self.label.hide() # 멀티 모드에서는 기본 라벨 숨김
@@ -192,25 +193,49 @@ class OverlayWindow(QtWidgets.QWidget):
         if total_len > 800:
             current_font.setPointSize(max(9, current_font.pointSize() - 3))
 
-        for item in final_data:
+        # Y 좌표 기준으로 정렬 (위에서 아래로 배치해야 순서가 꼬이지 않음)
+        sorted_data = sorted(final_data, key=lambda x: x["rect"][1])
+        placed_rects = []
+
+        for item in sorted_data:
             if not item["text"].strip(): continue
             lbl = QtWidgets.QLabel(item["text"], self)
             lbl.setWordWrap(True)
             lbl.setFont(current_font)
+            lbl.setAlignment(Qt.AlignLeft | Qt.AlignTop)
             # 글자 배경 및 스타일 (가독성 최우선)
             lbl.setStyleSheet("color: white; background: rgba(0,0,0,180); border: 1px solid rgba(255,255,255,60); border-radius: 4px; padding: 4px;")
             
             # 로컬 좌표 계산
             rx, ry, rw, rh = item["rect"]
             
-            # 폭을 원본보다 약간 넓게 설정하여 여유 공간 확보 (최대 1.2배)
-            w_fixed = max(int(rw * 1.1) + 20, 80)
-            lbl.setFixedWidth(w_fixed)
-            lbl.adjustSize() # 줄바꿈된 높이 자동 계산
+            # 폭을 원본보다 약간 넓게 설정하여 여유 공간 확보 (최대 1.3배)
+            w_fixed = max(int(rw * 1.3) + 20, 80)
+            
+            # QTextDocument를 활용하여 정확한 텍스트 높이 계산
+            doc = QtGui.QTextDocument()
+            doc.setDefaultFont(current_font)
+            doc.setPlainText(item["text"])
+            doc.setTextWidth(w_fixed - 8) # 양쪽 padding(4px * 2) 제외
+            needed_h = int(doc.size().height() + 0.999) + 8 # 상하 padding 포함
             
             # 텍스트가 원본 영역보다 길어질 경우를 대비해 충분한 높이 보장
-            final_h = max(lbl.height(), int(rh) + 10)
-            lbl.setGeometry(int(rx), int(ry), w_fixed, final_h)
+            final_h = max(needed_h + 10, int(rh) + 10)
+            
+            target_rect = QtCore.QRect(int(rx), int(ry), w_fixed, final_h)
+            
+            # 다른 라벨과 겹치는지 확인하고 밀어내기 (위에서 아래로)
+            while True:
+                collision = False
+                for p in placed_rects:
+                    if target_rect.intersects(p):
+                        collision = True
+                        target_rect.moveTop(p.bottom() + 4)
+                if not collision:
+                    break
+            
+            lbl.setGeometry(target_rect)
+            placed_rects.append(target_rect)
             
             # 가독성을 위한 그림자 효과 적용
             shadow = QtWidgets.QGraphicsDropShadowEffect(lbl)

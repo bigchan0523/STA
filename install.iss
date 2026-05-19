@@ -1,9 +1,9 @@
 [Setup]
-AppName=SAT
+AppName=STA
 AppVersion=3.0.0
-DefaultDirName={userappdata}\Programs\SAT
-DefaultGroupName=SAT
-OutputBaseFilename=SAT-Setup
+DefaultDirName={userappdata}\Programs\STA
+DefaultGroupName=STA
+OutputBaseFilename=STA-Setup
 PrivilegesRequired=lowest
 Compression=lzma2
 SolidCompression=yes
@@ -24,4 +24,4 @@ Filename: "{app}\python\python.exe"; Parameters: "-m pip install --upgrade pip";
 Filename: "{app}\python\python.exe"; Parameters: "-m pip install -r ""{app}\app\requirements.txt"" --target ""{app}\python\Lib\site-packages"""; WorkingDir: "{app}\python"; StatusMsg: "요구 라이브러리 설치 중..."
 
 [Icons]
-Name: "{userdesktop}\SAT"; Filename: "{app}\python\pythonw.exe"; Parameters: """{app}\app\main.py"""; WorkingDir: "{app}\app"; IconFilename: "{app}\app\icon.ico"
+Name: "{userdesktop}\STA"; Filename: "{app}\python\pythonw.exe"; Parameters: """{app}\app\main.py"""; WorkingDir: "{app}\app"; IconFilename: "{app}\app\icon.ico"

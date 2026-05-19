@@ -3,7 +3,7 @@ from dataclasses import dataclass, asdict, field
 from typing import Optional, List, Dict
 from PyQt5 import QtGui
 
-APP_NAME = "SAT"
+APP_NAME = "STA"
 
 def _appdata_dir() -> str:
     base = os.environ.get("APPDATA") or os.path.join(os.path.expanduser("~"), "AppData", "Roaming")
@@ -40,7 +40,7 @@ ex_3: str = (
     "출력 형식은 주어진 문장에 대한 한글 번역만을 담고 있어야 하며, 이외의 단어나 문장이 들어가서는 안 된다.\n"
     "출력할 텍스트가 여러 문단으로 이루어진 경우, 빈 줄을 통해 문단을 구분하라."
 )
-ex_sat: str = (
+ex_sta: str = (
     "1. 너는 다양한 장르(소설, 블로그, 위키피디아)를 다루는 전문 번역가이다.\n"
     "2. [장르별 어조] 위키나 지식 정보는 명확한 문어체(~다)를, 소설이나 블로그는 상황에 맞는 구어체(~해요, ~했다)를 사용하라.\n"
     "3. UI 요소나 설정 이름은 직역하여 직관성을 높이되, 본문 내용은 한국어 화자가 읽기에 자연스러운 문맥으로 번역하라.\n"
@@ -54,7 +54,7 @@ def _make_default_presets():
     def P(name, body):
         return {"id": uuid.uuid4().hex, "name": name, "system_prompt": body.strip()}
     return [
-        P("SAT 전문 번역", ex_sat),
+        P("STA 전문 번역", ex_sta),
         P("Arena Breakout", ex_1),
         P("Liar's Bar", ex_2),
         P("일반 번역", ex_3)

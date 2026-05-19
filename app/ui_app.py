@@ -450,7 +450,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, settings: SettingsManager):
         super().__init__()
         self.mgr = settings
-        self.setWindowTitle("SAT - Simple AI Translator")
+        self.setWindowTitle("STA - Simple Translator AI")
         self.resize(820, 540)
 
         self.selected_screen_idx: int = 0
